@@ -16,6 +16,15 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.data.decode(), "Hello, World!")
 
+    def test_404(self):
+        # Verifica que una ruta que no existe devuelva el error 404
+        response = self.app.get('/ruta-inexistente')
+        self.assertEqual(response.status_code, 404)
+
+    def test_home_content_type(self):
+        # Verifica que la respuesta sea de tipo texto/html
+        response = self.app.get('/')
+        self.assertIn('text/html', response.content_type)
 
 if __name__ == "__main__":
     unittest.main()
