@@ -18,8 +18,8 @@ class BasicTests(unittest.TestCase):
 
     def test_404(self):
         # Verifica que una ruta que no existe devuelva el error 404
-        response = self.app.get('/ruta-inexistente')
-        self.assertEqual(response.status_code, 404)
+        result = self.app.get('/ruta-falsa')
+        self.assertEqual(result.status_code, 404)
 
     def test_home_content_type(self):
         # Verifica que la respuesta sea de tipo texto/html
